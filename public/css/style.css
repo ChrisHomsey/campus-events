@@ -1,0 +1,291 @@
+html {
+  line-height: 1.4;
+  box-sizing: border-box; }
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.8125rem; }
+  @media (min-width: 640px) {
+    body {
+      font-size: 0.875rem; } }
+  @media (min-width: 1024px) {
+    body {
+      font-size: 0.9375rem; } }
+  @media (min-width: 1170px) {
+    body {
+      font-size: 1rem; } }
+
+h1 {
+  line-height: 1.15;
+  font-size: 2.5625rem; }
+  @media (min-width: 640px) {
+    h1 {
+      font-size: 2.75rem; } }
+  @media (min-width: 1024px) {
+    h1 {
+      font-size: 2.9375rem; } }
+  @media (min-width: 1170px) {
+    h1 {
+      font-size: 3.1875rem; } }
+
+h2 {
+  line-height: 1.15;
+  font-size: 1.9375rem; }
+  @media (min-width: 640px) {
+    h2 {
+      font-size: 2.0625rem; } }
+  @media (min-width: 1024px) {
+    h2 {
+      font-size: 2.25rem; } }
+  @media (min-width: 1170px) {
+    h2 {
+      font-size: 2.375rem; } }
+
+h3 {
+  line-height: 1.15;
+  font-size: 1.4375rem; }
+  @media (min-width: 640px) {
+    h3 {
+      font-size: 1.5625rem; } }
+  @media (min-width: 1024px) {
+    h3 {
+      font-size: 1.6875rem; } }
+  @media (min-width: 1170px) {
+    h3 {
+      font-size: 1.75rem; } }
+
+h4 {
+  line-height: 1.15;
+  font-size: 1.0625rem; }
+  @media (min-width: 640px) {
+    h4 {
+      font-size: 1.1875rem; } }
+  @media (min-width: 1024px) {
+    h4 {
+      font-size: 1.25rem; } }
+  @media (min-width: 1170px) {
+    h4 {
+      font-size: 1.3125rem; } }
+
+h5 {
+  line-height: 1.15;
+  font-size: 0.8125rem; }
+  @media (min-width: 640px) {
+    h5 {
+      font-size: 0.875rem; } }
+  @media (min-width: 1024px) {
+    h5 {
+      font-size: 0.9375rem; } }
+  @media (min-width: 1170px) {
+    h5 {
+      font-size: 1rem; } }
+
+h6 {
+  line-height: 1.15;
+  font-size: 0.625rem; }
+  @media (min-width: 640px) {
+    h6 {
+      font-size: 0.6875rem; } }
+  @media (min-width: 1024px) {
+    h6 {
+      font-size: 0.6875rem; } }
+  @media (min-width: 1170px) {
+    h6 {
+      font-size: 0.75rem; } }
+
+img {
+  max-width: 100%; }
+
+.triangle-left {
+  content: "";
+  display: block;
+  position: relative;
+  width: 0;
+  height: 0;
+  border-left: 2rem solid transparent;
+  border-right: 2rem solid transparent;
+  border-bottom: 2rem solid #cc4e46;
+  margin-bottom: -1rem; }
+  @media (min-width: 1170px) {
+    .triangle-left {
+      display: none; } }
+
+.triangle-right {
+  content: "";
+  display: block;
+  position: relative;
+  width: 0;
+  height: 0;
+  border-left: 2rem solid transparent;
+  border-right: 2rem solid transparent;
+  border-bottom: 2rem solid #222;
+  margin-bottom: -1rem;
+  float: right;
+  margin-right: 1em; }
+  @media (min-width: 1024px) {
+    .triangle-right {
+      display: none; } }
+
+#wrapper {
+  display: grid;
+  margin: 0 auto;
+  max-width: 1170px;
+  grid-template-columns: 4, 1fr;
+  grid-template-areas: "main main main main" "aside aside aside aside"; }
+  @media (min-width: 1024px) {
+    #wrapper {
+      grid-template-areas: "main main main aside" "main main main ."; } }
+
+.navbar {
+  grid-area: nav;
+  height: 3.5rem;
+  overflow: hidden;
+  background-color: #222; }
+  .navbar a {
+    float: right;
+    display: block;
+    text-align: center;
+    padding: 0 .8rem;
+    color: #ccc;
+    text-decoration: none;
+    line-height: 3.5rem;
+    font-size: 1rem; }
+    @media (min-width: 640px) {
+      .navbar a {
+        font-size: 1.125rem; } }
+    @media (min-width: 1024px) {
+      .navbar a {
+        font-size: 1.25rem; } }
+    @media (min-width: 1170px) {
+      .navbar a {
+        font-size: 1.375rem; } }
+    .navbar a:hover {
+      background-color: #333;
+      color: #fff; }
+
+.logo {
+  height: 100%;
+  float: left;
+  padding-left: 2rem; }
+  .logo span {
+    margin: 0;
+    line-height: 3.5rem;
+    font-size: 1.8rem;
+    color: #fff; }
+
+.navbar-nav {
+  display: none;
+  list-style: none;
+  margin-top: .3rem;
+  margin-right: 1.8rem;
+  float: right;
+  padding: 0; }
+  @media (min-width: 640px) {
+    .navbar-nav {
+      display: flex; } }
+
+.open-side-nav svg {
+  margin: .8rem; }
+
+@media (min-width: 640px) {
+  .open-side-nav {
+    display: none; } }
+
+.side-nav {
+  height: 100vh;
+  width: 0;
+  position: fixed;
+  z-index: 200;
+  top: 0;
+  left: 0;
+  padding-top: 4rem;
+  transition: 0.3s;
+  background-image: url("../img/sidemenu-bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow-x: hidden; }
+  .side-nav a {
+    margin-left: 2rem;
+    padding: .5rem .5rem .5rem 1.3rem;
+    text-decoration: none;
+    font-size: 2rem;
+    color: #fff;
+    display: block;
+    transition: 0.3s; }
+    .side-nav a:hover {
+      color: #fff; }
+  .side-nav .btn-close {
+    position: absolute;
+    top: 0;
+    right: 1rem;
+    margin-left: 2rem;
+    font-size: 2.8rem; }
+
+.banner {
+  grid-area: banner;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("../img/jumbo1.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  width: 100%;
+  height: 50vh;
+  min-height: 400px;
+  overflow-y: hidden; }
+
+.banner-text {
+  display: none; }
+  @media (min-width: 1024px) {
+    .banner-text {
+      display: block;
+      text-align: right;
+      position: absolute;
+      top: 50%;
+      left: 75%;
+      transform: translate(-50%, -50%);
+      color: #fff; } }
+
+#main {
+  grid-area: main;
+  background-color: #fff;
+  overflow: hidden;
+  padding: 1rem;
+  margin-top: -3rem;
+  border-top-right-radius: 3rem;
+  background-color: #fff;
+  z-index: 100; }
+  @media (min-width: 1024px) {
+    #main {
+      margin-top: 0;
+      border-top-right-radius: 0;
+      border-top-left-radius: 0;
+      background: none;
+      z-index: 0; } }
+
+aside {
+  background-color: #ccc;
+  grid-area: aside;
+  padding: 1rem;
+  background-color: #cc4e46;
+  color: #fff;
+  z-index: 101; }
+  @media (min-width: 1024px) {
+    aside {
+      margin: 1rem;
+      z-index: 0; } }
+
+#footer {
+  grid-area: footer;
+  width: 100vw;
+  background-color: #ccc;
+  background-color: #222;
+  padding: 1rem 0;
+  color: #fff;
+  z-index: 103; }
+  #footer .right-content {
+    text-align: right;
+    padding-right: 3em; }
+  @media (min-width: 1024px) {
+    #footer {
+      z-index: 0; } }

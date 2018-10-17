@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>CSS Grid</title>
+</head>
+<body>
+    
+    <header>
+        <nav class="navbar">
+            <div class="logo"><span>CampusEvents</span></div>
+            <span class="open-side-nav">
+                <a href="#" onclick="handleSideMenu()">
+                    <svg width="30" height="30">
+                        <path d="M0,5 30,5" stroke="#fff" stroke-width="5"/>
+                        <path d="M0,14 30,14" stroke="#fff" stroke-width="5"/>
+                        <path d="M0,23 30,23" stroke="#fff" stroke-width="5"/>
+                    </svg>
+                </a>
+            </span>
+            <ul class="navbar-nav">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+
+        </nav>
+
+        <div class="banner">
+            <div class="banner-text">
+                <h1>Campus Event Management</h1>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+            </div>
+        </div>
+
+    </header>
+
+    <div id="side-menu" class="side-nav">
+            <a href="#" class="btn-close" onclick="handleSideMenu()">&times;</a>
+            <a href="#">Home</a>    
+            <a href="#">About</a>   
+            <a href="#">Services</a>    
+            <a href="#">Contact</a>
+    </div>
+
+    <div id="wrapper">
+
+        <aside>
+            <h3>Aside</h3>
+            
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt, illum possimus velit sequi accusantium reiciendis repudiandae, labore numquam maxime architecto natus iure expedita quia aliquam modi perferendis at provident deleniti!</p>
+            
+            <p>Dolore, explicabo eum incidunt corrupti libero non veniam facilis, odio deleniti sit nihil rerum voluptas blanditiis animi asperiores rem vitae, nemo dicta repellendus reprehenderit natus? Delectus vel dicta exercitationem dignissimos.</p>
+            
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam delectus, vel in doloremque saepe iusto ad reprehenderit eius harum magnam blanditiis ipsum, voluptates praesentium adipisci.</p>
+            
+            <div class="triangle-right"></div>
+
+        </aside>
+
+        <section id="main">
+            <header>
+                <h2>Content</h2>
+            </header>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius non officiis, debitis dolor vitae vel fugit perferendis, eveniet culpa consequatur ipsam! Iusto, quam? Repellat soluta deserunt dicta consequatur ex eveniet temporibus dignissimos repudiandae, magnam itaque quibusdam a! Porro, magnam voluptatem voluptas nam quasi temporibus, reiciendis harum id officiis alias rem totam, fugit qui. Porro suscipit a culpa et praesentium fuga fugiat excepturi, dignissimos magni assumenda tempora id. Sit, similique voluptatum eligendi quidem commodi possimus magnam ratione, perferendis id ab consectetur.</p>
+            <p>Sint quis quidem aliquid nemo natus in fugit impedit tempore ea corrupti possimus nam, laudantium odit? Molestiae natus amet quaerat assumenda nesciunt, voluptas ea officia porro sint aliquam, dicta earum voluptatibus sunt ipsum eaque est ipsam temporibus sapiente animi maxime harum. Ipsa enim repellat ab minus maiores ea quia! Cupiditate beatae officia odio exercitationem eaque veritatis? Temporibus repellat quos molestiae facilis illum libero impedit eius. Debitis magnam dolorum, ipsum autem nisi assumenda asperiores tempora beatae mollitia expedita eum, harum totam?</p>
+            
+            <blockquote cite="http://www.imdb.com/character/ch0000672/quotes">
+                <p>You know the golden rule, don’t you boy? Those who have the gold make the rules.</p>
+                <footer>— <a href="http://www.imdb.com/character/ch0000672/quotes">Crazy hunch-backed old guy in Aladdin</a></footer>
+            </blockquote>
+            
+
+            <img src="/img/grad.jpg" alt="">
+
+            <h3>Lorem, ipsum dolor.</h3>
+
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident sed id neque deleniti. Magni quasi facilis rerum quod in architecto minima at sed quam pariatur dolore expedita minus, numquam nisi assumenda non harum. Culpa soluta corrupti sunt fuga quod numquam recusandae quidem, quis quia quasi iusto alias eos sed rem saepe assumenda asperiores, voluptates esse rerum cupiditate itaque perspiciatis dolorem.</p>
+            <p>Vel dolor, voluptas asperiores, cumque nam molestiae commodi eaque sint cupiditate enim voluptate! Minima alias quasi porro ad quae aliquam cupiditate, voluptatem similique fuga, accusamus nobis quo, culpa et at laborum velit sequi temporibus numquam odit dolores tenetur. Temporibus, nam. Vel, eveniet nemo voluptas provident repellendus, repellat omnis obcaecati dolore quasi iusto sint? Aut ratione earum vero, dolorem est deserunt.</p>
+        
+            <div class="triangle-left">
+            
+            </div>
+        </section>
+        
+        
+    </div>
+    
+    <footer id="footer">
+        <div class="right-content">
+            <h4>Footer</h4>
+            <p>© Copyright 2018 Chris Homsey</p>
+        </div>
+    </footer>
+    
+    <script>
+
+        var sideMenuOpen = false;
+
+        function handleSideMenu(){
+            if (sideMenuOpen){
+                sideMenuOpen = false;
+                document.getElementById('side-menu').style.width = '0';
+                document.getElementById('main').style.marginLeft = '0';
+            } else {
+                sideMenuOpen = true;
+                document.getElementById('side-menu').style.width = '100vw';
+            }
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+{
+  "name": "campus-events",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass:compile": "node-sass --include-path sass ./public/css/style.scss ./public/css/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChrisHomsey/campus-events.git"
+  },
+  "author": "Chris Homsey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ChrisHomsey/campus-events/issues"
+  },
+  "homepage": "https://github.com/ChrisHomsey/campus-events#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "node-sass": "^4.9.4"
+  }
+}

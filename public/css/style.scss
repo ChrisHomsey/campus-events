@@ -1,0 +1,357 @@
+// color vars
+$red: #cc4e46;
+$blue: #2c3e50;
+$white: #fff;
+$light: #ccc;
+$grey: #333;
+$dark: #222;
+$darker: #111;
+
+//breakpoint vars
+$lg: 1170px;
+$md: 1024px;
+$sm: 640px;
+$browser-context: 16;
+
+// unitless function to convert px to rem
+@function rem($pixels, $context: $browser-context) {
+    @if (unitless($pixels)) {
+        $pixels: $pixels * 1px;
+    }
+    @if (unitless($context)) {
+        $context: $context * 1px;
+    }
+    @return $pixels / $context * 1rem;
+}
+
+// breakpoint mixin
+@mixin breakpoint($mq01: 0, $mq2: false, $maxmin: min-width) {
+    @if $mq2 == false {
+        @media ($maxmin: $mq01) {
+            @content;
+        }
+    }@else{
+        @media (min-width: $mq01) and (max-width: $mq2) {
+            @content;
+        }
+    }
+}
+
+// responsive font-size mixin
+@mixin font-size-map($font-size-map) {
+    @each $breakpoint, $font-size in $font-size-map {
+        @if $breakpoint == null {
+            font-size: rem($font-size);
+        } @else {
+            @include breakpoint($breakpoint) {
+                font-size: rem($font-size);
+            }
+        }
+    }
+}
+
+// Center Block Element mixin
+@mixin push--auto {
+    margin: { 
+        left: auto;
+        right: auto;
+    }
+}
+
+// Triangle mixin
+@mixin css-triangle($color, $direction, $size: 6px, $position: absolute, $round: false){
+    @include pseudo($pos: $position);
+    width: 0;
+    height: 0;
+    @if $round {
+        border-radius: 3px;
+    }
+    @if $direction == down {
+        border-left: $size solid transparent;
+        border-right: $size solid transparent;
+        border-top: $size solid $color;
+        margin-top: 0 - round( $size / 2.5 );
+    } @else if $direction == up {
+        border-left: $size solid transparent;
+        border-right: $size solid transparent;
+        border-bottom: $size solid $color;
+        margin-bottom: 0 - round( $size / 2.5 );
+    } @else if $direction == right {
+        border-top: $size solid transparent;
+        border-bottom: $size solid transparent;
+        border-left: $size solid $color;
+        margin-right: -$size;
+    } @else if  $direction == left {
+        border-top: $size solid transparent;
+        border-bottom: $size solid transparent;
+        border-right: $size solid $color;
+        margin-left: -$size;
+    }
+}
+
+@mixin pseudo($display: block, $pos: absolute, $content: ''){
+    content: $content;
+    display: $display;
+    position: $pos;
+}
+
+// typography scale
+$lg-font-size: $browser-context; //16
+$md-font-size: 15;
+$sm-font-size: 14;
+$xs-font-size: 13;
+$h1-scale: 3.157;
+$h2-scale: 2.369;
+$h3-scale: 1.777;
+$h4-scale: 1.333;
+$h5-scale: 1;
+$h6-scale: .75;
+
+$body-font-size: (null: $xs-font-size, $sm: $sm-font-size, $md: $md-font-size, $lg: $lg-font-size);
+$h1-font-size: (null: round($xs-font-size * $h1-scale), $sm: round($sm-font-size * $h1-scale), $md: round($md-font-size  * $h1-scale), $lg: round($lg-font-size * $h1-scale));
+$h2-font-size: (null: round($xs-font-size * $h2-scale), $sm: round($sm-font-size * $h2-scale), $md: round($md-font-size  * $h2-scale), $lg: round($lg-font-size * $h2-scale));
+$h3-font-size: (null: round($xs-font-size * $h3-scale), $sm: round($sm-font-size * $h3-scale), $md: round($md-font-size  * $h3-scale), $lg: round($lg-font-size * $h3-scale));
+$h4-font-size: (null: round($xs-font-size * $h4-scale), $sm: round($sm-font-size * $h4-scale), $md: round($md-font-size  * $h4-scale), $lg: round($lg-font-size * $h4-scale));
+$h5-font-size: (null: round($xs-font-size * $h5-scale), $sm: round($sm-font-size * $h5-scale), $md: round($md-font-size  * $h5-scale), $lg: round($lg-font-size * $h5-scale));
+$h6-font-size: (null: round($xs-font-size * $h6-scale), $sm: round($sm-font-size * $h6-scale), $md: round($md-font-size  * $h6-scale), $lg: round($lg-font-size * $h6-scale));
+
+html {
+    line-height: 1.4;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    @include font-size-map($body-font-size);
+}
+
+h1 {
+    line-height: 1.15;
+    @include font-size-map($h1-font-size);
+}
+
+h2 {
+    line-height: 1.15;
+    @include font-size-map($h2-font-size);
+}
+
+h3 {
+    line-height: 1.15;
+    @include font-size-map($h3-font-size);
+}
+
+h4 {
+    line-height: 1.15;
+    @include font-size-map($h4-font-size);
+}
+
+h5 {
+    line-height: 1.15;
+    @include font-size-map($h5-font-size);
+}
+
+h6 {
+    line-height: 1.15;
+    @include font-size-map($h6-font-size);
+}
+
+// End responsive functions
+
+img{
+    max-width: 100%;
+}
+
+.triangle-left{
+    @include css-triangle($red, up, 2rem, relative, false);
+    @include breakpoint($lg){
+        display:none;
+    }
+}
+
+.triangle-right{
+    @include css-triangle($dark, up, 2rem, relative, false);
+    float: right;
+    margin-right: 1em;
+    @include breakpoint($md){
+        display:none;
+    }
+}
+
+#wrapper {
+    display: grid;
+    margin: 0 auto;
+    max-width: 1170px;
+    grid-template-columns: 4, 1fr;
+    grid-template-areas: 
+        "main main main main"
+        "aside aside aside aside";
+    @include breakpoint($md){
+        grid-template-areas:
+            "main main main aside"
+            "main main main .";
+    }
+}
+
+.navbar{
+    grid-area: nav;
+    height: 3.5rem;
+    overflow: hidden;
+    background-color: $dark;
+    a{
+        float: right;
+        display: block;
+        text-align: center;
+        padding: 0 .8rem;
+        color: $light;
+        text-decoration: none;
+        line-height: 3.5rem;
+        @include font-size-map((null: 16, $sm: 18, $md: 20, $lg: 22));
+        &:hover{
+            background-color: $grey;
+            color: $white;
+        }
+    }
+}
+
+.logo{
+    height: 100%;
+    float: left;
+    padding-left: 2rem;
+    span{
+        margin: 0;
+    line-height: 3.5rem;
+    font-size: 1.8rem;
+    color: $white;
+    }
+}
+
+.navbar-nav{
+    display: none;
+    list-style: none;
+    margin-top: .3rem;
+    margin-right: 1.8rem;
+    float: right;
+    padding: 0;
+    @include breakpoint($sm){
+        display: flex;
+    }
+}
+
+.open-side-nav{
+    svg{
+        margin: .8rem;
+    }
+    @include breakpoint($sm){
+        display: none;
+    }
+}
+
+.side-nav{
+    height: 100vh;
+    width: 0;
+    position: fixed;
+    z-index:200;
+    top: 0;
+    left: 0;
+    padding-top: 4rem;
+    transition: 0.3s;
+    background-image: url('../img/sidemenu-bg.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow-x: hidden;
+    a {
+        margin-left: 2rem;
+        padding: .5rem .5rem .5rem 1.3rem;
+        text-decoration: none;
+        font-size: 2rem;
+        color: $white;
+        display:block;
+        transition: 0.3s;
+        &:hover{
+            color: $white;
+        }
+    }
+    .btn-close{
+        position: absolute;
+        top: 0;
+        right: 1rem;
+        margin-left: 2rem;
+        font-size: 2.8rem;
+    }
+}
+
+.banner{
+    grid-area: banner;
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../img/jumbo1.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    width: 100%;
+    height: 50vh;
+    min-height: 400px;
+    overflow-y: hidden;
+}
+
+.banner-text{
+    display: none;
+    @include breakpoint($md){
+        display: block;
+        text-align: right;
+        position: absolute;
+        top: 50%;
+        left: 75%;
+        transform: translate(-50%, -50%);
+        color: $white;
+    }
+}
+
+#main{
+    grid-area: main;
+    background-color: $white;
+    overflow: hidden;
+    padding: 1rem;
+    margin-top: -3rem;
+    border-top-right-radius: 3rem;
+    // border-top-left-radius: 2.8rem;
+    background-color: $white;
+    z-index: 100;
+    @include breakpoint($md){
+        margin-top: 0;
+        border-top-right-radius: 0;
+        border-top-left-radius: 0;
+        background: none;
+        z-index: 0; 
+    }
+}
+
+aside{
+    background-color: $light;
+    grid-area: aside;
+    padding: 1rem;
+    background-color: $red;
+    color: $white;
+    z-index: 101;
+    @include breakpoint($md){
+        margin: 1rem;
+        z-index: 0;
+    }
+}
+
+#footer{
+    grid-area: footer;
+    width: 100vw;
+    background-color: $light;
+    background-color: $dark;
+    padding: 1rem 0;
+    color: $white;
+    z-index: 103;
+    .right-content{
+        text-align: right;
+        padding-right: 3em;
+    }
+    @include breakpoint($md){
+        z-index: 0;
+    }
+}
