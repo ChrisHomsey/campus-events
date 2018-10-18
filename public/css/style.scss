@@ -1,6 +1,6 @@
 // color vars
 $red: #cc4e46;
-$blue: #2c3e50;
+$blue: #2D4A7E;
 $white: #fff;
 $light: #ccc;
 $grey: #333;
@@ -50,6 +50,79 @@ $browser-context: 16;
     }
 }
 
+// typography scale
+$lg-font-size: $browser-context; //16
+$md-font-size: 15;
+$sm-font-size: 14;
+$xs-font-size: 13;
+$h1-scale: 3.157;
+$h2-scale: 2.369;
+$h3-scale: 1.777;
+$h4-scale: 1.333;
+$h5-scale: 1;
+$h6-scale: .75;
+
+$body-font-size: (null: $xs-font-size, $sm: $sm-font-size, $md: $md-font-size, $lg: $lg-font-size);
+$h1-font-size: (null: round($xs-font-size * $h1-scale), $sm: round($sm-font-size * $h1-scale), $md: round($md-font-size  * $h1-scale), $lg: round($lg-font-size * $h1-scale));
+$h2-font-size: (null: round($xs-font-size * $h2-scale), $sm: round($sm-font-size * $h2-scale), $md: round($md-font-size  * $h2-scale), $lg: round($lg-font-size * $h2-scale));
+$h3-font-size: (null: round($xs-font-size * $h3-scale), $sm: round($sm-font-size * $h3-scale), $md: round($md-font-size  * $h3-scale), $lg: round($lg-font-size * $h3-scale));
+$h4-font-size: (null: round($xs-font-size * $h4-scale), $sm: round($sm-font-size * $h4-scale), $md: round($md-font-size  * $h4-scale), $lg: round($lg-font-size * $h4-scale));
+$h5-font-size: (null: round($xs-font-size * $h5-scale), $sm: round($sm-font-size * $h5-scale), $md: round($md-font-size  * $h5-scale), $lg: round($lg-font-size * $h5-scale));
+$h6-font-size: (null: round($xs-font-size * $h6-scale), $sm: round($sm-font-size * $h6-scale), $md: round($md-font-size  * $h6-scale), $lg: round($lg-font-size * $h6-scale));
+
+// Cross Browser Support @mixins
+
+@mixin box-shadow($left, $top, $radius, $color) {
+	box-shadow: $left $top $radius $color;
+	-webkit-box-shadow: $left $top $radius $color;
+	-moz-box-shadow: $left $top $radius $color;
+}
+
+@mixin transition($property, $duration, $easing: linear) {
+	transition: $property $duration $easing;
+	-webkit-transition: $property $duration $easing;
+	-moz-transition: $property $duration $easing;
+}
+
+@mixin border-radius($radius) {
+	border-radius: $radius;
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+}
+
+@mixin border-radii($topleft: null, $topright: null, $bottomright: null, $bottomleft: null) {
+    @if $topleft != null and $topleft >= 0 {
+      border-top-left-radius: $topleft;;
+      -webkit-border-top-left-radius: $topleft;
+      -moz-border-radius-topleft: $topleft;
+    }
+  
+    @if $topright != null and $topright >= 0 {
+      border-top-right-radius: $topright;
+      -webkit-border-top-right-radius: $topright;
+      -moz-border-radius-topright: $topright;
+    }
+  
+    @if $bottomleft != null and $bottomleft >= 0 {
+      border-bottom-left-radius: $bottomleft;
+      -webkit-border-bottom-left-radius: $bottomleft;
+      -moz-border-radius-bottomleft: $bottomleft;
+    }
+  
+    @if $bottomright != null and $bottomright >= 0 {
+      border-bottom-right-radius: $bottomright;
+      -webkit-border-bottom-right-radius: $bottomright;
+      -moz-border-radius-bottomright: $bottomright;
+    }
+  }
+
+  @mixin gradient($color1, $color2) {
+	background-color: $color1;
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#{$color1}, endColorstr=#{$color2});
+	background-image: -moz-linear-gradient(center top, $color1, $color2);
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($color1), to($color2));
+}
+
 // Center Block Element mixin
 @mixin push--auto {
     margin: { 
@@ -94,26 +167,6 @@ $browser-context: 16;
     display: $display;
     position: $pos;
 }
-
-// typography scale
-$lg-font-size: $browser-context; //16
-$md-font-size: 15;
-$sm-font-size: 14;
-$xs-font-size: 13;
-$h1-scale: 3.157;
-$h2-scale: 2.369;
-$h3-scale: 1.777;
-$h4-scale: 1.333;
-$h5-scale: 1;
-$h6-scale: .75;
-
-$body-font-size: (null: $xs-font-size, $sm: $sm-font-size, $md: $md-font-size, $lg: $lg-font-size);
-$h1-font-size: (null: round($xs-font-size * $h1-scale), $sm: round($sm-font-size * $h1-scale), $md: round($md-font-size  * $h1-scale), $lg: round($lg-font-size * $h1-scale));
-$h2-font-size: (null: round($xs-font-size * $h2-scale), $sm: round($sm-font-size * $h2-scale), $md: round($md-font-size  * $h2-scale), $lg: round($lg-font-size * $h2-scale));
-$h3-font-size: (null: round($xs-font-size * $h3-scale), $sm: round($sm-font-size * $h3-scale), $md: round($md-font-size  * $h3-scale), $lg: round($lg-font-size * $h3-scale));
-$h4-font-size: (null: round($xs-font-size * $h4-scale), $sm: round($sm-font-size * $h4-scale), $md: round($md-font-size  * $h4-scale), $lg: round($lg-font-size * $h4-scale));
-$h5-font-size: (null: round($xs-font-size * $h5-scale), $sm: round($sm-font-size * $h5-scale), $md: round($md-font-size  * $h5-scale), $lg: round($lg-font-size * $h5-scale));
-$h6-font-size: (null: round($xs-font-size * $h6-scale), $sm: round($sm-font-size * $h6-scale), $md: round($md-font-size  * $h6-scale), $lg: round($lg-font-size * $h6-scale));
 
 html {
     line-height: 1.4;
@@ -184,7 +237,8 @@ img{
     grid-template-columns: 4, 1fr;
     grid-template-areas: 
         "main main main main"
-        "aside aside aside aside";
+        "aside aside aside aside"
+        "footer footer footer footer";
     @include breakpoint($md){
         grid-template-areas:
             "main main main aside"
@@ -250,7 +304,7 @@ img{
     height: 100vh;
     width: 0;
     position: fixed;
-    z-index:200;
+    z-index:1;
     top: 0;
     left: 0;
     padding-top: 4rem;
@@ -310,13 +364,11 @@ img{
 #main{
     grid-area: main;
     background-color: $white;
-    overflow: hidden;
     padding: 1rem;
-    margin-top: -3rem;
-    border-top-right-radius: 3rem;
-    // border-top-left-radius: 2.8rem;
+    margin-top: -2rem;
     background-color: $white;
     z-index: 100;
+    @include border-radii(1.8rem, 1.8rem);
     @include breakpoint($md){
         margin-top: 0;
         border-top-right-radius: 0;
@@ -336,6 +388,28 @@ aside{
     @include breakpoint($md){
         margin: 1rem;
         z-index: 0;
+    }
+}
+
+blockquote{
+    background-color: $blue + #111;
+    color: $white;
+    width: calc(100% -2rem);
+    padding: 2rem;
+    margin: 1.5rem -1rem;
+    font-weight: 600;
+    footer{
+        text-decoration: none;
+        color: $white;
+        text-align: right;
+        padding-right: 2rem;
+    }
+    @include breakpoint($md){
+        border-left: 1rem solid $blue;
+        border-bottom: .5rem solid $blue;
+        margin: 2rem 2rem;
+        width: auto;
+        @include border-radii(1rem, 1rem, 1rem, 0);
     }
 }
 

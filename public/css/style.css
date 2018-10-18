@@ -131,7 +131,7 @@ img {
   margin: 0 auto;
   max-width: 1170px;
   grid-template-columns: 4, 1fr;
-  grid-template-areas: "main main main main" "aside aside aside aside"; }
+  grid-template-areas: "main main main main" "aside aside aside aside" "footer footer footer footer"; }
   @media (min-width: 1024px) {
     #wrapper {
       grid-template-areas: "main main main aside" "main main main ."; } }
@@ -195,7 +195,7 @@ img {
   height: 100vh;
   width: 0;
   position: fixed;
-  z-index: 200;
+  z-index: 1;
   top: 0;
   left: 0;
   padding-top: 4rem;
@@ -249,12 +249,16 @@ img {
 #main {
   grid-area: main;
   background-color: #fff;
-  overflow: hidden;
   padding: 1rem;
-  margin-top: -3rem;
-  border-top-right-radius: 3rem;
+  margin-top: -2rem;
   background-color: #fff;
-  z-index: 100; }
+  z-index: 100;
+  border-top-left-radius: 1.8rem;
+  -webkit-border-top-left-radius: 1.8rem;
+  -moz-border-radius-topleft: 1.8rem;
+  border-top-right-radius: 1.8rem;
+  -webkit-border-top-right-radius: 1.8rem;
+  -moz-border-radius-topright: 1.8rem; }
   @media (min-width: 1024px) {
     #main {
       margin-top: 0;
@@ -274,6 +278,37 @@ aside {
     aside {
       margin: 1rem;
       z-index: 0; } }
+
+blockquote {
+  background-color: #3e5b8f;
+  color: #fff;
+  width: calc(100% -2rem);
+  padding: 2rem;
+  margin: 1.5rem -1rem;
+  font-weight: 600; }
+  blockquote footer {
+    text-decoration: none;
+    color: #fff;
+    text-align: right;
+    padding-right: 2rem; }
+  @media (min-width: 1024px) {
+    blockquote {
+      border-left: 1rem solid #2D4A7E;
+      border-bottom: 0.5rem solid #2D4A7E;
+      margin: 2rem 2rem;
+      width: auto;
+      border-top-left-radius: 1rem;
+      -webkit-border-top-left-radius: 1rem;
+      -moz-border-radius-topleft: 1rem;
+      border-top-right-radius: 1rem;
+      -webkit-border-top-right-radius: 1rem;
+      -moz-border-radius-topright: 1rem;
+      border-bottom-left-radius: 0;
+      -webkit-border-bottom-left-radius: 0;
+      -moz-border-radius-bottomleft: 0;
+      border-bottom-right-radius: 1rem;
+      -webkit-border-bottom-right-radius: 1rem;
+      -moz-border-radius-bottomright: 1rem; } }
 
 #footer {
   grid-area: footer;
